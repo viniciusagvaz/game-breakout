@@ -5,8 +5,8 @@ const blockHeight = 20;
 const ballDiameter = 20;
 const boardWidth = 560;
 const boardHeight = 300;
-let xDirection = -2;
-let yDirection = 2;
+let xDirection = -4;
+let yDirection = 4;
 
 const userStart = [230, 10];
 let currentPosition = userStart;
@@ -116,7 +116,7 @@ timerId = setInterval(moveBall, 30);
 
 // check for collisions
 function checkForCollisions() {
-  //check for block collisions
+  //toDo: check for block collisions
   for (let i = 0; i < blocks.length; i++) {
     if (
       ballCurrentPosition[0] > blocks[i].bottomLeft[0] &&
@@ -124,15 +124,23 @@ function checkForCollisions() {
       ballCurrentPosition[1] + ballDiameter > blocks[i].bottomLeft[1] &&
       ballCurrentPosition[1] < blocks[i].topLeft[1]
     ) {
-      const allBlocks = Array.from(document.querySelectorAll('.block'))
-      allBlocks[i].classList.remove('block')
-      blocks.splice(i, 1)
-      changeDirection()
-      score++
-      scoreDisplay.textContent = score
+      const allBlocks = Array.from(document.querySelectorAll(".block"));
+      allBlocks[i].classList.remove("block");
+      blocks.splice(i, 1);
+      changeDirection();
+      score++;
+      scoreDisplay.textContent = score;
+
+      //todo: check for win
+      if (blocks.length === 0){
+        scoreDisplay.textContent = "YOU WIN!"
+        clearInterval(timerId)
+        document.removeEventListener('keydown', moveUser)
+      }
     }
   }
-  // check for wall collisions
+
+  //toDo: check for wall collisions
   if (
     ballCurrentPosition[0] >= boardWidth - ballDiameter ||
     ballCurrentPosition[1] >= boardHeight - ballDiameter ||
@@ -141,7 +149,17 @@ function checkForCollisions() {
     changeDirection();
   }
 
-  // check for game over
+  //toDo: check for user collision
+  if (
+    ballCurrentPosition[0] > currentPosition[0] &&
+    ballCurrentPosition[0] < currentPosition[0] + blockWidth &&
+    ballCurrentPosition[1] > currentPosition[1] &&
+    ballCurrentPosition[1] < currentPosition[1] + blockHeight
+  ) {
+    changeDirection()
+  }
+
+  //toDo: check for game over
   if (ballCurrentPosition[1] <= 0) {
     clearInterval(timerId);
     scoreDisplay.textContent = "You lost!";
@@ -151,19 +169,19 @@ function checkForCollisions() {
 
 // change directions
 function changeDirection() {
-  if (xDirection === 2 && yDirection === 2) {
-    yDirection = -2;
+  if (xDirection === 4 && yDirection === 4) {
+    yDirection = -4;
     return;
   }
-  if (xDirection === 2 && yDirection === -2) {
-    xDirection = -2;
+  if (xDirection === 4 && yDirection === -4) {
+    xDirection = -4;
     return;
   }
-  if (xDirection === -2 && yDirection === -2) {
-    yDirection = 2;
+  if (xDirection === -4 && yDirection === -4) {
+    yDirection = 4;
     return;
   }
-  if (xDirection === -2 && yDirection === 2) {
-    xDirection = 2;
+  if (xDirection === -4 && yDirection === 4) {
+    xDirection = 4;
   }
 }
