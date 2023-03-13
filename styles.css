@@ -6,12 +6,6 @@
   margin-top: 100px;
 }
 
-.user {
-  position: absolute;
-  width: 100px;
-  height: 20px;
-  background-color: blueviolet;
-}
 
 .block {
   position: absolute;
@@ -20,7 +14,16 @@
   background-color: blue;
 }
 
-.ball {
+.user {
+  position: absolute;
+  width: 80px;
+  height: 20px;
+  background-color: violet;
+  left: 50px;
+  bottom: 50px;
+}
+
+.ball{
   position: absolute;
   width: 20px;
   height: 20px;
