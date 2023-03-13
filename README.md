@@ -5,20 +5,22 @@ It's the fourth functional game that I'll be learning for the next days to a tot
 <div>
 <h3>JavaScript Properties and Methods cover:</h3>
 <ul>
-  <li>.querySelectorAll()
+  <li>class()
   <li>.querySelector()
-  <li>.Math.random()
-  <li>.length
+  <li>constructor()
+  <li>this
+  <li>e.key
   <li>.createElement()
-  <li>.setAttibute()
-  <li>.getAttibute()
-  <li>.append()
-  <li>.addEventListener()
-  <li>.removeEventListener()
-  <li>.setTimeout()
-  <li>.textContent
-  <li>.push()
-  <li>alert()
+  <li>.createElement()
+  <li>.appendChild()
+  <li>.topLeft && topRight
+  <li>.splice()
+  <li>Array.from
+  <li>.switch()
+  <li>.removeEventListner()
+  <li>classList.add() && classList.remove
+  <li>setInterval() && clearInterval()
+  <li>.style.left() && style.bottom()
 </ul>
 </div>
 <h4>The seven games will be listed at their difficult levels wich will be:</h4>
